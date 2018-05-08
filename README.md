@@ -310,11 +310,93 @@ We have been working on our backend service for awhile now and it is time to con
 
 Starting Angular project requires the installation of `Node.js`.  Installing `Node.js` comes with NPM which will help us to install the `CLI` needed to build a coherent workflow for Angular projects.  Go ahead and install `Node.js` for your system. Once, it is installed, install the `Angular CLI` with `npm i -g @angular/cli` command on your terminal. 
 
-### Generating An Angular App
+### Generating An Angular App and Setting it Up with Angular Material
 
 Let's generate our frontend application with the `Angular CLI` we just installed.  At the root of the project, use `ng new frontend` command to generate a project.  The project structure should now look like this;
 
 ![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/root.PNG "Root of Project")
+
+If you, don't know much about `Angular Material` you can read more about it from my previous article. It will explain how to setup `Angular Material` project. 
+
+#### Installing Angular Material 
+
+Navigate to your frontend folder and run `npm install --save @angular/material @angular/cdk` command in the terminal.
+
+#### Installing Animations Module.
+
+Run `npm install --save @angular/animations` command in the terminal. Then import `BrowserAnimationsModule` from `@angular/platform-browser/animations` into `src/app/app.module.ts` file.
+
+#### Adding Angular Material Theme.
+
+Just copy and paste into the src/styles.css file the following content.
+
+```css
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+```
+#### Adding Angular Material Gesture.
+
+To achieve gestures for some Angular Material components, add `hammer.js` to our project and import that into `src/main.ts` file.
+
+#### Making use of Material Icons.
+
+Just include the following code in the `src/index.html` file.
+
+```html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+#### Using the Angular Material in our Project.
+I like importing the Angular Material components  that I will need in my project in a single file and then make it available for the entire project. To do so, create `src/app/material.module.ts` file and add the following to it;
+
+```ts
+import {NgModule} from '@angular/core'
+import {
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule
+} from '@angular/material';
+
+@NgModule({
+	imports: [
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule
+
+  ],
+  exports: [
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule
+  ]
+})
+export class MaterialModule {}
+```
+
+We can now import this created module in the `app.module.ts` file as;
+
+```ts
+import {MaterialModule} from './material.module';
+```
 
 ### Generating Components
 
