@@ -144,12 +144,17 @@ public class IssuesController {
 ```
 
 Here, our controller is not doing anything great; it is just creating and returning issues. 
-Now, we can go ahead and test our endpoints to see if they are working as expect. I will be using `PostMan` to do the testing. 
+Now, we can go ahead and test our endpoints to see if they are working as expect. I will be using `PostMan` to do the testing.  
 
 ![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/first-post-postman.PNG "POST HttpMethod")
+                                    Fig1: Post Http Method  to send data to a REST backend           
+From the image, we selected the `POST` method and then added our web address. Also, the message needed to be sent in `json format` so under the `body section`, `raw` and `JSON(application/json)` were selectd.
 
 
 ![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/first-get-postman.PNG "GET HttpMethod")
+                                Fig2: Get Http Method  to retrieve data from a REST backend.                 
+From the image, we selected the `Get` method and then added our web address. This then retrieved all the data from our datasource.
+
 
 The data is currently not persisted to a datastore. In order to achieve permanent data store, we will need a database system like MySQL or SQLite,etc. In our case, we will be using MyQSL. 
 
