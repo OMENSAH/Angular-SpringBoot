@@ -55,20 +55,8 @@ Now, we have our spring boot app running, we need to add more logic to meet our 
 ### Creating models
 
 RESTful API endpoints  are created around certain resource. The resource is data on which we want to perform operation(s)  and it can be present in database as record(s) of table(s) or in any other form.These records have information as model. We will go ahead to create a model that hold information about our electrical issues.  Some information can be unique identifier of the issue, title of issue, its details, and so on. To do so we will create a sub-package for our application called model and then define a class called Issue to hold the those information. Our Model is just a Plain Old Java Object Class with some attributes representing the information about our resource. 
+
 ```java
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package electricalissues.backend.model;
-
-import java.util.Date;
-
-/**
- *
- * @author olive
- */
 public class Issue {
     private int id;
     private String title;
@@ -171,12 +159,14 @@ To setup our database, we will need to provide the various configuration needed 
 There paste these information:
 
 ```properties
-spring.datasoruce.driver-class-name=com.jdbc.Driver
+spring.datasoruce.driver-class-name=com.mysql.jdbc.Driver
 spring.datasoruce.url=jdbc:mysql://localhost:3306/AngularSpringDB
 spring.datasource.username=root
 spring.datasource.password=
 ```
-We can go ahead and create our database but you need to have MySQL installed. From my end, I'm using Xampp. Once database is created, we will need to update our dependencies in `pom.xml` file. We will need these two dependencies to work with our database; `mysql` and `jpa`. Open `pom.xml` and add the dependencies as;
+
+This is basically using MySQL drivers to access a database called `AngularSpringDB` on a localhost server accessible through the user's username and password. 
+We will need to create this database. But before that, you need to have MySQL installed. From my end, I'm using Xampp. Once database is created, we will need to update our dependencies in `pom.xml` file. We will need these two dependencies to work with our database; `mysql` and `jpa`. Open `pom.xml` and add the dependencies as;
 
 ```xml
 <dependency>
@@ -191,9 +181,119 @@ We can go ahead and create our database but you need to have MySQL installed. Fr
 </dependency>
 ```
 
+Now Let's about our make our model interact with database in very easier and effecient way, we will update our POJO model to Java Persistent API(JPA) entity by just anotating our POJO class with `Entitty`. JPA is a collection of classes and methods to persistently and easily operate on data in database. 
 
+```java
+@Entity
+@Table(name="Issues")
+public class Issue {
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", nullable = false, unique = true)
+    private Long id;
+    
+    @Column(name="title", nullable = false)
+    private String title;
+    
+    @Column(name="body", nullable = false)
+    private String body;
+    
+    @Column(name="date_created", nullable = false)
+    private Date date_created;
+    
+    @Column(name="resporter_name", nullable = false)
+    private String resporter_name;
+    
+    @Column(name="name_of_device", nullable = false)
+    private String name_of_device;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Date getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(Date date_created) {
+        this.date_created = date_created;
+    }
+
+    public String getResporter_name() {
+        return resporter_name;
+    }
+
+    public void setResporter_name(String resporter_name) {
+        this.resporter_name = resporter_name;
+    }
+
+    public String getName_of_device() {
+        return name_of_device;
+    }
+
+    public void setName_of_device(String name_of_device) {
+        this.name_of_device = name_of_device;
+    }
+}
+```
+
+Finally, for our JPA entity to utilize the available functionalities to easily interact with our database as well as reduce boilerplate code required to implement data access layers for various persistence stores, we will need to expose those functionalities to our JPA by extending to JpaRepository that adds some more functionality that is specific to JPA. JpaRepository basically takes in our entity and expose those functionalities to it.  
+
+Go ahead and create a sub-package called `repositories` and then add a Java interface file to it.  Add the follwoing code to our `interface file`.
+
+```java
+public interface IssuesRepository  extends JpaRepository<Issue, Long>{
+    
+}
+```
+
+With this we can use the `IssuesRepository` to interact with our database. Let's go ahead and use it our controllers. Now update the controller's code to;
+
+```java
+@RestController
+@RequestMapping("/api/issues")
+public class IssuesController {
+    
+    @Autowired
+    private IssuesRepository issureRepository;
+        
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody Issue issue) {
+       issureRepository.save(issue);
+    }
+        
+    @GetMapping 
+    public List<Issue> getIssues(){
+        return issureRepository.findAll();
+    }
+    
+    @GetMapping("/{id}")
+    public Issue findOne(@PathVariable long id) {
+        return issureRepository.getOne(id);
+    }
+}
+```
 
 
 
