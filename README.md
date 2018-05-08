@@ -147,12 +147,12 @@ Here, our controller is not doing anything great; it is just creating and return
 Now, we can go ahead and test our endpoints to see if they are working as expect. I will be using `PostMan` to do the testing.  
 
 ![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/first-post-postman.PNG "POST HttpMethod")
-                                    Fig1: Post Http Method  to send data to a REST backend           
+                               
 From the image, we selected the `POST` method and then added our web address. Also, the message needed to be sent in `json format` so under the `body section`, `raw` and `JSON(application/json)` were selectd.
 
 
 ![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/first-get-postman.PNG "GET HttpMethod")
-                                Fig2: Get Http Method  to retrieve data from a REST backend.                 
+                                             
 From the image, we selected the `Get` method and then added our web address. This then retrieved all the data from our datasource.
 
 
@@ -304,6 +304,31 @@ Let's test this in `PostMan` by adding issues as well as retrieving issues from 
 
 ## Creating our Frontend in Angular.
 
-We have been working on our backend service for awhile now and it is time to connect that to our frontend application We will go ahed and start working on our frontend application in Angular. But before that, we will have a look at Cross Origins or Cross Origin Resource Sharing. 
+We have been working on our backend service for awhile now and it is time to connect that to our frontend application We will go ahed and start working on our frontend application in Angular. 
+
+### Setting Up Development Environment for our Frontend 
+
+Starting Angular project requires the installation of `Node.js`.  Installing `Node.js` comes with NPM which will help us to install the `CLI` needed to build a coherent workflow for Angular projects.  Go ahead and install `Node.js` for your system. Once, it is installed, install the `Angular CLI` with `npm i -g @angular/cli` command on your terminal. 
+
+### Generating An Angular App
+
+Let's generate our frontend application with the `Angular CLI` we just installed.  At the root of the project, use `ng new frontend` command to generate a project.  The project structure should now look like this;
+
+![alt text](https://raw.githubusercontent.com/OMENSAH/Angular-SpringBoot/master/images/root.PNG "Root of Project")
+
+### Generating Components
+
+
+### Creating Services
+
+#### Setting up Proxy 
+
+#### Creating Models 
+
+#### Using Service to Communicate between Frontend and Backend Applications.
+
+
+
+
 
 
