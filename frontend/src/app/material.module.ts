@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core'
+import { NgModule } from '@angular/core';
 import {
     MatSidenavModule,
     MatToolbarModule,
@@ -11,6 +11,7 @@ import {
     MatInputModule,
     MatSelectModule
 } from '@angular/material';
+
 
 @NgModule({
 	imports: [
