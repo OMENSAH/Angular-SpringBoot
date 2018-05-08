@@ -6,24 +6,46 @@
 package electricalissues.backend.model;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author olive
  */
+@Entity
+@Table(name="Issues")
 public class Issue {
-    private int id;
+
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", nullable = false, unique = true)
+    private Long id;
+    
+    @Column(name="title", nullable = false)
     private String title;
+    
+    @Column(name="body", nullable = false)
     private String body;
+    
+    @Column(name="date_created", nullable = false)
     private Date date_created;
+    
+    @Column(name="resporter_name", nullable = false)
     private String resporter_name;
+    
+    @Column(name="name_of_device", nullable = false)
     private String name_of_device;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

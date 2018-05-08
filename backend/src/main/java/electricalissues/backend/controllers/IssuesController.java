@@ -6,9 +6,11 @@
 package electricalissues.backend.controllers;
 
 import electricalissues.backend.model.Issue;
+import electricalissues.backend.repositories.IssuesRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,21 +27,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/issues")
 public class IssuesController {
-    List<Issue> issues = new ArrayList<>();
     
+    @Autowired
+    private IssuesRepository issureRepository;
+        
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Issue issue) {
-        issues.add(issue);
+       issureRepository.save(issue);
     }
         
     @GetMapping 
     public List<Issue> getIssues(){
-        return issues;
+        return issureRepository.findAll();
     }
     
     @GetMapping("/{id}")
     public Issue findOne(@PathVariable long id) {
-        return new Issue();
+        return issureRepository.getOne(id);
     }
 }
