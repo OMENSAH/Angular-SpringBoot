@@ -167,7 +167,34 @@ The data is currently not persisted to a datastore. In order to achieve permanen
 
 ### Setting Up Database.
 
-O
+To setup our database, we will need to provide the various configuration needed to connect to our database. They can be provided in `application.properties` file in `src/main/resources` folder.
+There paste these information:
+
+```properties
+spring.datasoruce.driver-class-name=com.jdbc.Driver
+spring.datasoruce.url=jdbc:mysql://localhost:3306/AngularSpringDB
+spring.datasource.username=root
+spring.datasource.password=
+```
+We can go ahead and create our database but you need to have MySQL installed. From my end, I'm using Xampp. Once database is created, we will need to update our dependencies in `pom.xml` file. We will need these two dependencies to work with our database; `mysql` and `jpa`. Open `pom.xml` and add the dependencies as;
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+<dependency>
+   <groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <scope>runtime</scope>
+</dependency>
+```
+
+
+
+
+
 
 
 
