@@ -397,6 +397,9 @@ We can now import this created module in the `app.module.ts` file as;
 ```ts
 import {MaterialModule} from './material.module';
 ```
+#### Adding Layout Control Package for Angular Material.
+
+Angular Material does not ship any grid system so without external package, controlling the layout of an Angular Material application can be complex. To reduce that complexity, we will be using a package called Flex Layout. Add the package to our project with `npm install @angular/flex-layout` command and add package to `src/app.module.ts` file.
 
 ### Generating Components
 
