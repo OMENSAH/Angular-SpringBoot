@@ -304,7 +304,7 @@ Let's test this in `PostMan` by adding issues as well as retrieving issues from 
 
 ## Creating our Frontend in Angular.
 
-We have been working on our backend service for awhile now and it is time to connect that to our frontend application We will go ahed and start working on our frontend application in Angular. 
+We have been working on our backend service for awhile now and it is time to connect that to our frontend application We will go ahead and start working on our frontend application using Angular Material. 
 
 ### Setting Up Development Environment for our Frontend 
 
