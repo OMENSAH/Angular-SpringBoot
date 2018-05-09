@@ -1,0 +1,11 @@
+{
+	"/server": {
+		"target": "http://empressleak.biz",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/server" : ""
+        }
+	}
+}
