@@ -1,6 +1,6 @@
 {
 	"/server": {
-		"target": "http://empressleak.biz",
+		"target": "http://localhost:8080",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug",

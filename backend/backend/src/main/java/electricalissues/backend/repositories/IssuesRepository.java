@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author olive
  */
-public interface IssuesRepository  extends JpaRepository<Issue, Long>{
+public interface IssuesRepository extends JpaRepository<Issue, Long> {
     
 }

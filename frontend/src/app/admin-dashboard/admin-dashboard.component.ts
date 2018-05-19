@@ -23,7 +23,7 @@ export class AdminDashboardComponent implements OnInit{
   }  
 
   getIssues(){
-    return this.service.getData().subscribe(
+    return this.service.getIssues().subscribe(
       data => this.dataSource = data
     )
   }

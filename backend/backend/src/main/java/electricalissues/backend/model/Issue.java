@@ -5,7 +5,6 @@
  */
 package electricalissues.backend.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,32 +19,31 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Issues")
 public class Issue {
-
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id", nullable = false, unique = true)
-    private Long id;
+    @Column(name="id", nullable=false, unique=true)
+    private int id;
     
-    @Column(name="title", nullable = false)
+    @Column(name="title", nullable=false)
     private String title;
     
-    @Column(name="body", nullable = false)
+    @Column(name="body", nullable=false)
     private String body;
     
-    @Column(name="date_created", nullable = false)
-    private Date date_created;
+    @Column(name="date_created", nullable=false)
+    private String date_created;
+     
+    @Column(name="reporter_name", nullable=false)
+    private String reporter_name;
     
-    @Column(name="resporter_name", nullable = false)
-    private String resporter_name;
-    
-    @Column(name="name_of_device", nullable = false)
+    @Column(name="name_of_device", nullable=false)
     private String name_of_device;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,20 +63,20 @@ public class Issue {
         this.body = body;
     }
 
-    public Date getDate_created() {
+    public String getDate_created() {
         return date_created;
     }
 
-    public void setDate_created(Date date_created) {
+    public void setDate_created(String date_created) {
         this.date_created = date_created;
     }
 
-    public String getResporter_name() {
-        return resporter_name;
+    public String getReporter_name() {
+        return reporter_name;
     }
 
-    public void setResporter_name(String resporter_name) {
-        this.resporter_name = resporter_name;
+    public void setReporter_name(String reporter_name) {
+        this.reporter_name = reporter_name;
     }
 
     public String getName_of_device() {
