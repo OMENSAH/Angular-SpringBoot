@@ -5,6 +5,7 @@
  */
 package electricalissues.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +19,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Issues")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id", nullable=false, unique=true)
-    private int id;
+    private Long id;
     
     @Column(name="title", nullable=false)
     private String title;
@@ -39,11 +41,11 @@ public class Issue {
     @Column(name="name_of_device", nullable=false)
     private String name_of_device;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

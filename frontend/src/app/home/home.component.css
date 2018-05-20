@@ -1,0 +1,10 @@
+.card {
+    min-width: 80%;
+  }
+.example-form{
+    display: flex;
+    flex-direction: column
+}
+.example-form > *{
+    width: 100%
+}

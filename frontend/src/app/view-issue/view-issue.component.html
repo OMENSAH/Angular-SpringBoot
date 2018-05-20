@@ -1,0 +1,21 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+    <mat-card class="card" >
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+       <h3>Report on {{issue.name_of_device}}</h3>
+      </mat-card-title>
+      <hr>
+      <mat-card-content>
+        <h4>Details of The Reported Issue</h4>
+        <p>{{issue.body}}</p>
+        <br>
+        <h4>Reporter's Name: </h4>
+        <p>{{issue.reporter_name}}</p>
+        <br>
+        <h4>Date of Report: </h4>
+        <p>{{issue.date_created}}</p>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

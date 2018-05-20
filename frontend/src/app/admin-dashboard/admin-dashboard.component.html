@@ -18,10 +18,13 @@
           <mat-card-content>
               <div class="example-container mat-elevation-z8">
                   <mat-table #table [dataSource]="dataSource">
-                
                   <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.id }} </mat-cell>
+                    <mat-cell *matCellDef="let element">
+                      <a   [routerLink]="['/admin/view', element.id]">
+                        {{element.id }}
+                      </a> 
+                    </mat-cell>
                   </ng-container>
 
                     <ng-container matColumnDef="title">
@@ -40,16 +43,6 @@
                       <mat-cell *matCellDef="let element"> {{element.name_of_device}} </mat-cell>
                     </ng-container>
 
-                    <!-- <ng-container matColumnDef="name_of_device">
-                      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                      <mat-cell *matCellDef="let element">
-                        <a   
-                          (click)="deletePost(element.position)" type="button">
-                          <mat-icon class="icon">delete</mat-icon>
-                        </a> 
-                      </mat-cell>
-                    </ng-container>      -->
-                                 
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                   </mat-table>

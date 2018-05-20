@@ -10,13 +10,15 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { IssuesService } from './services/issues.service';
 import { AppRouters } from './app.routes';
 import { HomeComponent } from './home/home.component';
+import { ViewIssueComponent } from './view-issue/view-issue.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminDashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ViewIssueComponent
   ],
   imports: [
     BrowserModule,

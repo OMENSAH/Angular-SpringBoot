@@ -1,5 +1,4 @@
 export interface Issue {
-    id: number;
     title: string;
     body: string;
     date_created: Date;

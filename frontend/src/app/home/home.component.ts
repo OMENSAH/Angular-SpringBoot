@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  message: string = "";
   issue : Issue = {
-    id: 0,
     title: "",
     body: "",
     date_created: new Date,
@@ -29,13 +29,20 @@ export class HomeComponent implements OnInit {
   
   onSubmit({value, valid}:{value:Issue, valid:boolean}){
     if(!valid){
-      // this.flashMessagesService.show("Please Fill in All Fields", {cssClass:"alert-danger", timeout:4000});
+      this.message = "Please Fill out the Form before submitting";
       this.router.navigate(['/']);
   }else{
     this.submitButton = true;
-    this.issueService.addIssue(value);
+    this.message = "Thank you for submitting an electrical issue"
+    this.issueService.addIssue(value).subscribe(
+      data => {
+        this.router.navigate(['/']);
+      }, error=> {
+        this.router.navigate(['/']);
+      }
+    )
     // this.flashMessagesService.show('New  client Successfully added', {cssClass:"alert-success", timeout:4000});
-    this.router.navigate(['/']);
+   
   }
 
 }

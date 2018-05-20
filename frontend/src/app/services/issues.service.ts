@@ -18,8 +18,8 @@ export class IssuesService {
 
   addIssue(issue: Issue){
     let body = JSON.stringify(issue);
+    console.log(body)
     return this.http.post("/server/api/issues", body, {headers: new HttpHeaders({'Content-Type': 'application/json'})});
-
   }
 
   // getData(): Observable<Issue[]>{
