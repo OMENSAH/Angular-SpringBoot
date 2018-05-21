@@ -14,7 +14,7 @@ This is a project is a prototype application for my Auth0's Building FullStack A
 ### Frontend
 * npm i 
 * npm start
-## Backend 
+###  Backend 
 * Setup MySQL database connection parameters in application.properties
 * Setup Auth0 issuer and apiAudience
 * Update hibernate dll to create on the first time, build and run backend as Java application
