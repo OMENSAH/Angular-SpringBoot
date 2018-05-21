@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav  #sidenav role="navigation">
+  <mat-sidenav  #sidenav role="navigation"  *ngIf="auth.isAuthenticated()">
    <mat-nav-list>
     <a mat-list-item
       routerLink="/admin">
@@ -28,7 +28,7 @@
        
      </div>
      <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
-        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items"  *ngIf="auth.isAuthenticated()">
             <li>
                 <a
                   routerLink="/admin"

@@ -11,6 +11,9 @@ import { IssuesService } from './services/issues.service';
 import { AppRouters } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { ViewIssueComponent } from './view-issue/view-issue.component';
+import { CallbackComponent } from './callback/callback.component';
+import { AuthGuard } from './services/auth.guard'
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -18,7 +21,8 @@ import { ViewIssueComponent } from './view-issue/view-issue.component';
     AppComponent,
     AdminDashboardComponent,
     HomeComponent,
-    ViewIssueComponent
+    ViewIssueComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { ViewIssueComponent } from './view-issue/view-issue.component';
     AppRouters,
     FormsModule
   ],
-  providers: [IssuesService],
+  providers: [AuthService, IssuesService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

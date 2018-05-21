@@ -33,11 +33,13 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/']);
   }else{
     this.submitButton = true;
-    this.message = "Thank you for submitting an electrical issue"
+   
     this.issueService.addIssue(value).subscribe(
       data => {
+        this.message = "Thank you for submitting an electrical issue"
         this.router.navigate(['/']);
       }, error=> {
+        this.message = error.message;
         this.router.navigate(['/']);
       }
     )
