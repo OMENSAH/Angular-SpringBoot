@@ -55,13 +55,13 @@
                         [(ngModel)] ="issue.reporter_name"
                         name="reporter_name"
                         #issueReporterName="ngModel"
-                        minlength="10" 
+                        minlength="3" 
                         required>
                         <div *ngIf="issueReporterName.errors?.required && issueReporterName.touched" class="alert alert-danger">
                                 Name of Reporter of Issue is required
                         </div>
                         <div *ngIf="issueReporterName.errors?.minlength && issueReporterName.touched"  class="alert alert-danger">
-                             Character must be 10 characters
+                             Character must be 3 characters
                         </div>
                 </mat-form-field>
                 <mat-form-field>
@@ -85,10 +85,10 @@
                             [(ngModel)] ="issue.name_of_device"
                             name="name_of_device"
                             #issueNameOfDevice="ngModel"
-                            minlength="10" 
+                            minlength="5" 
                             required>
                             <div *ngIf="issueNameOfDevice.errors?.minlength && issueNameOfDevice.touched"  class="alert alert-danger">
-                               Character must be 10 characters
+                               Character must be 5 characters
                             </div>
                             <div *ngIf="issueNameOfDevice.errors?.required && issueNameOfDevice.touched" class="alert alert-danger">
                                   Name of device is required
