@@ -34,9 +34,12 @@ public class Auth0SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .configure(http)
         .authorizeRequests()
             .antMatchers(HttpMethod.POST, "/api/issues").permitAll()
-            .antMatchers(HttpMethod.GET, "/api/issues").permitAll()
-            .antMatchers(HttpMethod.GET, "/api/issues/**").permitAll()
-                .anyRequest().authenticated();
+            .antMatchers(HttpMethod.GET, "/api/issues").hasAuthority("read:issue")
+            .antMatchers(HttpMethod.GET, "/api/issues/**").hasAuthority("read:issues");
+//                .anyRequest().authenticated();
+//            .antMatchers(HttpMethod.GET, "/api/issues").permitAll()
+//            .antMatchers(HttpMethod.GET, "/api/issues/**").permitAll()
+//                .anyRequest().authenticated();
     }
     
 }

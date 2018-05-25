@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Issue } from '../models/issue';
 import { HttpClient, HttpHeaders}  from '@angular/common/http'
-import { Observable }   from 'rxjs/Observable';
+
 
 @Injectable()
 export class IssuesService {
   constructor(private http: HttpClient) { }
 
   getIssues(){
-    let token = localStorage.getItem('access_token');
-    return this.http.get("/server/api/issues", 
-    // {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)}
-  );
+     return this.http.get("/server/api/issues", 
+     {headers: new HttpHeaders().set('Authorization', 'Bearer '+ localStorage.getItem('access_token'))}
+    );
   }
 
   getIssue(id: number){
-    let token = localStorage.getItem('access_token');
-    return  this.http.get(`/server/api/issues/${id}`,
-    // {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)}
-  );
-
+    return  this.http.get(`/server/api/issues/${id}`, 
+      {headers: new HttpHeaders().set('Authorization',  'Bearer '+ localStorage.getItem('access_token'))}
+    );
   }
 
   addIssue(issue: Issue){
@@ -29,12 +26,5 @@ export class IssuesService {
     {headers: new HttpHeaders({'Content-Type': 'application/json'})}
   );
   }
-
-  // getData(): Observable<Issue[]>{
-  //   return this.http.get<Issue[]>("/server/api/issues");
-  // }
 }
 
-
-
-  
