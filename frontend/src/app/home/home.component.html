@@ -1,20 +1,21 @@
-<div class="container">
-    <div fxLayout="row" fxLayoutAlign="center center" class="content">
-      <mat-card class="card" >
-        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-         <h3>Report Electrical Issue</h3>
-         <br/><br/>
-         <div class="container">
-                <div class="container">
-                  <div  fxLayout="column" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
-                    <div class="blocks" *ngIf="message">
-                     <h3>{{message}}</h3>
-                    </div>
-                </div>
-            </div>
+<div>
+    <br>
+      <div class="container">
+          <div class="container">
+            <div  fxLayout="column" fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+              <div class="blocks" *ngIf="message">
+                <h3>{{message}}</h3>
+               </div>
           </div>
-        </mat-card-title>
-        <mat-card-content>
+      </div>
+      <br>
+      <div class="container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="content">
+          <mat-card class="card" >
+            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+             <h3>Electrical Issue Reporting</h3>
+            </mat-card-title>
+            <mat-card-content>
             <form class="example-form" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
                 <mat-form-field>
                     <input matInput 

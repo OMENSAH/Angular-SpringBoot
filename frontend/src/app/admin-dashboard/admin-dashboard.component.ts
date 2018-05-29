@@ -5,6 +5,7 @@ import { DataSource } from '@angular/cdk/table';
 import { Observable } from 'rxjs/Observable';
 import { Issue } from '../models/issue';
 import { MatDialog } from '@angular/material';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,7 +13,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit{
-
+  public message;
   public dataSource;
   displayedColumns = ['id', 'title', 'date_created', 'name_of_device'];
 
@@ -24,7 +25,8 @@ export class AdminDashboardComponent implements OnInit{
 
   getIssues(){
     return this.service.getIssues().subscribe(
-      data => this.dataSource = data
+      data => this.dataSource = data,
+      error=> this.message = error.message
     )
   }
   

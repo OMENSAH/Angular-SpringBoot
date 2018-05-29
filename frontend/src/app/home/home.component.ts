@@ -30,21 +30,17 @@ export class HomeComponent implements OnInit {
   onSubmit({value, valid}:{value:Issue, valid:boolean}){
     if(!valid){
       this.message = "Please Fill out the Form before submitting";
-      this.router.navigate(['/']);
   }else{
     this.submitButton = true;
-   
     this.issueService.addIssue(value).subscribe(
       data => {
         this.message = "Thank you for submitting an electrical issue"
-        this.router.navigate(['/']);
       }, error=> {
         this.message = error.message;
-        this.router.navigate(['/']);
+        
       }
     )
-    // this.flashMessagesService.show('New  client Successfully added', {cssClass:"alert-success", timeout:4000});
-   
+
   }
 
 }
