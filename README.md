@@ -16,6 +16,7 @@ This is a project is a prototype application for my Auth0's Building FullStack A
 * npm start
 ###  Backend 
 * Setup MySQL database connection parameters in application.properties
+* Create a database named `angular_spring_db`
 * Setup Auth0 issuer and apiAudience
 * Update hibernate dll to create on the first time, build and run backend as Java application
 * Update hibernate dll to none after the first exeution for successful database creation, build and run backend as Java application
